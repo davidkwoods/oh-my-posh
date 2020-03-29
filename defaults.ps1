@@ -52,6 +52,7 @@ $global:ThemeSettings = New-Object -TypeName PSObject -Property @{
     Colors               = @{
         GitDefaultColor                         = [ConsoleColor]::DarkGreen
         GitLocalChangesColor                    = [ConsoleColor]::DarkYellow
+        GitIndexChangesColor                    = [ConsoleColor]::Yellow
         GitNoLocalChangesAndAheadColor          = [ConsoleColor]::DarkMagenta
         GitNoLocalChangesAndBehindColor         = [ConsoleColor]::DarkRed
         GitNoLocalChangesAndAheadAndBehindColor = [ConsoleColor]::DarkRed
