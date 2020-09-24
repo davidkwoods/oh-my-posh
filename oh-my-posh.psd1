@@ -65,6 +65,7 @@ FunctionsToExport = @('Write-ColorPreview',
                       'Test-Administrator',
                       'Get-ComputerName',
                       'Set-Newline',
+                      'Get-BatteryInfo',
                       'Get-ThemesLocation'
                       'Set-Prompt')
 

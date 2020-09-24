@@ -60,7 +60,9 @@ $ scoop search conemu
   conemu (18.xx.xx)
 $ scoop install conemu
 ```
+
 Windows Terminal can be acquired from the Microsoft Store, the [Windows Terminal repo](https://github.com/microsoft/terminal), or via [Chocolatey][chocolatey]:
+
 ```powershell
 choco install microsoft-windows-terminal
 ```
@@ -92,7 +94,9 @@ Set-Theme Agnoster
 
 In case you're running this on PS Core, make sure to also install version 2.0.0-beta1 of `PSReadLine`
 
-    Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+```powershell
+Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+```
 
 To enable the engine edit your PowerShell profile:
 
@@ -207,6 +211,13 @@ Set-Theme paradox
 
 ![Star Theme][img-theme-zash]
 
+### Lambda
+
+![Lambda Theme](./img/lambda.png)
+
+### Emodipt
+
+![Emodipt Theme][img-theme-emodipt]
 
 ## Creating your own theme
 
@@ -258,12 +269,22 @@ Next, in your custom theme, access the information you want to display:
 $stackCount = (&$getStackContext).count
 ```
 
+### iTerm2 is creating notifications every time
+
+This is caused by the `ConsoleTitle` functionality.
+As explained by [Andrew Stanton-Nurse][consoletitle] it's linked to how terminals work with OSC codes.
+The fix is to disable the `ConsoleTitle` functionality when in iTerm2 by adding the following snippet to your `$PROFILE`.
+
+```powershell
+if($env:LC_TERMINAL -eq "iTerm2") {
+    $ThemeSettings.Options.ConsoleTitle = $false
+}
+```
+
 ### Based on work by
 
 * [Chris Benti][chrisbenti-psconfig]
 * [Keith Dahlby][keithdahlby-poshgit]
-
-
 
 [build-status-badge]: https://img.shields.io/appveyor/ci/janjoris/oh-my-posh/master.svg?maxAge=2592000
 [build-status]: https://ci.appveyor.com/project/JanJoris/oh-my-posh
@@ -308,3 +329,5 @@ $stackCount = (&$getStackContext).count
 [img-theme-material2]: img/material2.png
 [img-theme-star]: img/star.png
 [img-theme-zash]: img/zash.png
+[img-theme-emodipt]: img/emodipt.png
+[consoletitle]: https://github.com/JanDeDobbeleer/oh-my-posh/issues/261#issuecomment-649701607
