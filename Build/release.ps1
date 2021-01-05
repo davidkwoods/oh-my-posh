@@ -1,5 +1,5 @@
 if ($ENV:APPVEYOR_REPO_BRANCH -eq 'master' -and [string]::IsNullOrWhiteSpace($ENV:APPVEYOR_PULL_REQUEST_NUMBER)) {
-    Publish-Module -path . -NuGetApiKey $env:NG_KEY -Verbose
+    Publish-Module -path . -NuGetApiKey $env:NG_KEY -Verbose -Force
     #Create GitHub release
     Write-Host 'Starting GitHub release'
     $releaseData = @{
