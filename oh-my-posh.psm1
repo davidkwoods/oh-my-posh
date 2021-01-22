@@ -12,8 +12,8 @@ function Set-Prompt {
     Import-Module $sl.CurrentThemeLocation -Force
 
     [ScriptBlock]$Prompt = {
-        $realLASTEXITCODE = $global:LASTEXITCODE
         $lastCommandFailed = ($global:error.Count -gt $sl.ErrorCount) -or -not $?
+        $realLASTEXITCODE = $global:LASTEXITCODE
         $sl.ErrorCount = $global:error.Count
 
         #Start the vanilla posh-git when in a vanilla window, else: go nuts
